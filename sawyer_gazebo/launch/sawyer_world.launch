@@ -3,6 +3,7 @@
 
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
   <arg name="paused" default="false"/>
+  <arg name="camera" default="true"/>
   <arg name="use_sim_time" default="true"/>
   <arg name="gui" default="true"/>
   <arg name="headless" default="false"/>
@@ -38,7 +39,7 @@
   <param if="$(arg load_robot_description)" name="robot_description"
       command="$(find xacro)/xacro --inorder $(find sawyer_description)/urdf/sawyer.urdf.xacro
       gazebo:=true electric_gripper:=$(arg electric_gripper)
-      pedestal:=$(arg pedestal) static:=$(arg static)"/>
+      pedestal:=$(arg pedestal) static:=$(arg static) camera:=$(arg camera)"/>
   <!-- Load Parameters to the ROS Parameter Server -->
   <rosparam command="load" file="$(find sawyer_gazebo)/config/config.yaml" />
   <rosparam command="load" file="$(find sawyer_description)/params/named_poses.yaml" />
